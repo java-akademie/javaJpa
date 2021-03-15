@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <!-- JAVA SE - ECLIPSELINK -->
+
+    <!-- ******************************** -->
+    <!-- eclipselink.ddl-generation value -->
+    <!-- ******************************** -->
+    <!-- none ........................... -->
+    <!-- create-tables .................. -->
+    <!-- drop-and-create-tables ......... -->
+    <!-- ******************************** -->
+
+    <!-- ***************************************** -->
+    <!-- * transaction-type defaults ............* -->
+    <!-- ***************************************** -->
+    <!-- - in a JEE Environment = "JTA" .......... -->
+    <!-- - in a JSE Environment = "RESOURCE_LOCAL" -->
+    <!-- ***************************************** -->
+
+    <!-- ************************************** -->
+    <!-- eclipselink.logging.level ............ -->
+    <!-- ************************************** -->
+    <!-- OFF | SEVERE | WARNING | INFO | CONFIG -->
+    <!-- FINE | FINER | FINEST | ALL .......... -->
+    <!-- ************************************** -->
+
+    <!-- ********************************************************* -->
+    <!-- eclipselink.ddl-generation.output-mode (database=default) -->
+    <!-- ********************************************************* -->
+    <!-- sql-script | database | both ............................ -->
+    <!-- ********************************************************* -->
+
+    <persistence-unit name="H2" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.logging.level" value="info"/>
+            <property name="eclipselink.ddl-generation"
+                      value="drop-and-create-tables"/>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:h2:tcp://localhost/~/test"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value="sa"/>
+            <!-- ************************************************** -->
+            <property name="eclipselink.logging.file" value="./temp/output.log"/>
+            <property name="eclipselink.application-location" value="./temp"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name"
+                      value="H2_DROP.sql"/>
+            <property name="eclipselink.create-ddl-jdbc-file-name" value="H2_CREATE.sql"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
